@@ -3,7 +3,7 @@ import React, { createContext, ElementType, Fragment, useContext } from "react";
 const uniqueId = (prefix = "id-") =>
   prefix + Math.random().toString(32).slice(-4);
 
-interface IProps extends React.HTMLAttributes<HTMLElement> {
+interface TextModifierProps extends React.HTMLAttributes<HTMLElement> {
   text?: string;
   separator?: string;
   children?: string;
@@ -76,7 +76,7 @@ const Render = ({ splittedText = "", index }: IRender): JSX.Element => {
   if (newHighlight.length && isHave) {
     if (typeof newHighlight === "string" && lowerT === newHighlight) {
       return (
-        <>{renderHighlight?.(newT, index === lastIndex, highlightClassName)}</>
+        <>{renderHighlight(newT, index === lastIndex, highlightClassName)}</>
       );
     }
     const highlightInArr = newT.split(highlightSeparator);
@@ -87,7 +87,7 @@ const Render = ({ splittedText = "", index }: IRender): JSX.Element => {
           <Fragment key={j}>
             {typeof newHighlight === "string" &&
             (caseOff ? st : st.toLowerCase()) === newHighlight
-              ? renderHighlight?.(
+              ? renderHighlight(
                   st,
                   highlightInArrLast === j,
                   highlightClassName
@@ -96,19 +96,19 @@ const Render = ({ splittedText = "", index }: IRender): JSX.Element => {
                 newHighlight.find((it) =>
                   caseOff ? st === it : st.toLowerCase() === it.toLowerCase()
                 )
-              ? renderHighlight?.(
+              ? renderHighlight(
                   st,
                   highlightInArrLast === j,
                   highlightClassName
                 )
-              : renderNonHighlight?.(st, highlightInArrLast === j)}
+              : renderNonHighlight(st, highlightInArrLast === j)}
             {highlightSeparator}
           </Fragment>
         ))}
       </>
     );
   }
-  return <>{renderText?.(newT, index === lastIndex)}</>;
+  return <>{renderText(newT, index === lastIndex)}</>;
 };
 
 const TextSplitItem = ({ splittedText = "", index }: IRender) => {
@@ -117,7 +117,7 @@ const TextSplitItem = ({ splittedText = "", index }: IRender) => {
   return (
     <Fragment>
       <Render splittedText={splittedText} index={index} />{" "}
-      {index !== lastIndex && renderSeparator?.()}
+      {index !== lastIndex && renderSeparator()}
     </Fragment>
   );
 };
@@ -138,7 +138,7 @@ const TextSplit = ({
   renderNonHighlight = (nonHighlightedText = "") => nonHighlightedText,
   caseOff = false,
   ...props
-}: IProps) => {
+}: TextModifierProps) => {
   const newText = children || text;
 
   if (!newText.includes(separator) && !highlight) {
