@@ -1,6 +1,6 @@
 {
   "name": "textmodifier",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A text-highlight and text-splitter component for react.It's a customizable textmodifier component",
   "main": "index.js",
   "scripts": {

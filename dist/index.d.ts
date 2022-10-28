@@ -1,4 +1,4 @@
-import { ElementType, HTMLAttributes } from "react";
+import type { ElementType, HTMLAttributes } from "react";
 
 export interface TextModifierProps extends HTMLAttributes<HTMLElement> {
   text?: string;

@@ -4,14 +4,16 @@ A text-highlight and text-splitter component for `react`.It's a customizable tex
 
 ## install
 
-`npm install textmodifier`
-`yarn add textmodifier`
+```
+npm install textmodifier
+
+yarn add textmodifier
+```
 
 ## Usage
 
 ```
-const text =
-    "Hello dfrsh fsrgdh \n adgfsrg rwgyj \n ret fdgj H dfs frt5h hyj7i \n yjuk8 jju7i \n yuko8, utko8";
+    const text = "Contrary to popular belief \n Lorem Ipsum is not simply random text \n It has roots in a piece of classical \n Latin Lorem literature from 45 BC";
 
     // text-splitter
     <TextModifier text={text} />
@@ -19,23 +21,23 @@ const text =
     // text-highlight
     <TextModifier
         text={text}
-        highlight={"hello"}
+        highlight={"Lorem"}
         highlightClassName="text-5xl"
      />
 ```
 
 #### Customize
 
-```
-  const text =
-    "Hello dfrsh fsrgdh \n adgfsrg rwgyj \n ret fdgj H dfs frt5h hyj7i \n yjuk8 jju7i \n yuko8, utko8";
+##### Text-Splitter
 
-    // text-highlight
+```
+    const text = "Contrary to popular belief \n Lorem Ipsum is not simply random text \n It has roots in a piece of classical \n Latin Lorem literature from 45 BC";
+
     <TextModifier
         text={text}
         as="p"
         className="bg-blue-400"
-        renderSeparator={() => <hr />}
+        renderSeparator={() => <br />}
         separator="\n"
         renderText={(text, isLast) => {
           return (
@@ -48,14 +50,15 @@ const text =
 
 ```
 
-```
-    const text = "Hello dfrsh fsrgdh adgfsrg rwgyj ret fdgj H dfs ";
+##### Text-Highlight
 
-    // text-splitter
+```
+    const text = "Contrary to popular belief. Lorem Ipsum is not simply random text. It has roots in a piece of classical. Latin Lorem literature from 45 BC";
+
     <TextModifier
        text={text}
        as="p"
-       highlight={"hello"}
+       highlight={"Lorem"} // or you can use an array of highlight like ["Lorem", "random"]
        highlightClassName="text-5xl"
        highlightSeparator=" "
        caseOff
@@ -79,3 +82,5 @@ const text =
             }}
     />
 ```
+
+##### You can also use both of this in a text.
