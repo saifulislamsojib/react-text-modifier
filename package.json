@@ -1,6 +1,6 @@
 {
-  "name": "textmodifier",
-  "version": "1.0.6",
+  "name": "react-text-modifier",
+  "version": "1.0.0",
   "description": "A text-highlight and text-splitter component for react.It's a customizable textmodifier component",
   "main": "dist/index.js",
   "scripts": {
@@ -17,19 +17,23 @@
     "url": "https://github.com/saifulislamsojib/textmodifier"
   },
   "keywords": [
+    "react-text-modifier",
     "textmodifier",
     "highlight",
     "text-highlight",
     "react-textmodifier",
     "text-highlight-modifier",
     "react-text-highlight",
+    "react-text-splitter",
+    "text-splitter",
+    "text-splitter-react",
     "text-highlight-react"
   ],
   "author": "https://github.com/saifulislamsojib",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^18.2.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.4",

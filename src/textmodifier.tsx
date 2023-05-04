@@ -4,7 +4,7 @@ import { IContext, IRender, TextModifierProps } from "./textmodifier.types";
 const uniqueId = (prefix = "id-") =>
   prefix + Math.random().toString(32).slice(-4);
 
-const context = createContext<IContext>({} as IContext);
+const Context = createContext<IContext>({} as IContext);
 
 const Render = ({ splittedText = "", index }: IRender): JSX.Element => {
   const {
@@ -16,7 +16,7 @@ const Render = ({ splittedText = "", index }: IRender): JSX.Element => {
     renderNonHighlight,
     highlightClassName,
     caseOff,
-  } = useContext(context);
+  } = useContext(Context);
 
   const newT = splittedText.trim();
   const lowerT = caseOff ? newT : newT.toLowerCase();
@@ -67,7 +67,7 @@ const Render = ({ splittedText = "", index }: IRender): JSX.Element => {
 };
 
 const TextSplitItem = ({ splittedText = "", index }: IRender) => {
-  const { lastIndex, renderSeparator } = useContext(context);
+  const { lastIndex, renderSeparator } = useContext(Context);
 
   return (
     <Fragment>
@@ -120,7 +120,7 @@ const TextModifier = ({
   };
 
   return (
-    <context.Provider value={contextValue}>
+    <Context.Provider value={contextValue}>
       <Tag {...props}>
         {arr.map((splittedText, index) => (
           <TextSplitItem
@@ -130,7 +130,7 @@ const TextModifier = ({
           />
         ))}
       </Tag>
-    </context.Provider>
+    </Context.Provider>
   );
 };
 
